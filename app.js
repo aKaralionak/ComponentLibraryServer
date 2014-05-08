@@ -7,8 +7,11 @@ var express = require('express'),
     routes = require('./routes/index'),
     script = require('./routes/script'),
     style = require('./routes/style'),
+    bundleConfig = require('./bundleConfig'),
     app = express();
 
+/* Set base application constants */
+app.set('baseConstants', bundleConfig);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
