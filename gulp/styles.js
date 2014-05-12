@@ -5,20 +5,20 @@ var path = require('path'),
     gulp = require('gulp'),
     less = require('gulp-less'),
     concat = require('gulp-concat'),
-    stylesTask = function (res, flag, compBasePath, bundleName, root, pathOnServer) {
+    stylesTask = function (res, flag, options) {
         if (flag) {
             gulp.task('style', function () {
-                return gulp.src(compBasePath)
+                return gulp.src(options.componentsPaths)
                     .pipe(less())
-                    .pipe(concat(bundleName + '.css'))
-                    .pipe(gulp.dest(path.join(root, 'css')));
+                    .pipe(concat(options.bundleName + '.css'))
+                    .pipe(gulp.dest(path.join(options.root, 'css')));
             });
             gulp.run('style', function () {
-                return res.sendfile('build/' + pathOnServer);
+                return res.sendfile('build/' + options.bundleRoute);
             });
 
         } else {
-            res.sendfile('build/' + pathOnServer);
+            res.sendfile('build/' + options.bundleRoute);
         }
     };
 module.exports = stylesTask;

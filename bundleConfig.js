@@ -1,6 +1,6 @@
 module.exports = {
-    basedir: __dirname,
-    components: 'components',
+    root: __dirname,
+    compFolder: 'components',
     dest: 'build',
     script: 'js',
     style: 'css'
